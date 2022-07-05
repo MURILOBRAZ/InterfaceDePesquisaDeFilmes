@@ -1,0 +1,247 @@
+#Murilo Lima dos Santos Braz - 202873
+<Tela>:
+    id: ScMan
+    Screen:
+        name: 'telaPrincipal'
+        canvas.before:
+            Color: 
+                rgba: 0.8,0.5,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: ' '
+            font_size: 30  
+        BoxLayout:
+            spacing: 10
+            orientation: 'vertical'
+            Image:
+                source: 'imagens/logo.png'
+            Button:
+                size_hint: None,None
+                width: 300
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_normal: 'imagens/butLogNorm.png'
+                background_down: 'imagens/butLogDown.png'
+                on_press: ScMan.current = 'telaLogin'
+
+            Button:
+                size_hint: None,None 
+                width: 300
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_normal: 'imagens/butCadNorm.png'
+                background_down: 'imagens/butCadDown.png'
+                on_press: ScMan.current = 'telaCadastro'
+            Label:
+                text: ' '
+                font_size: 30
+
+    Screen:
+        name: 'telaLogin'
+        canvas.before:
+            Color: 
+                rgba: 1,0.5,0.5,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            spacing: 10
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: ' '
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                Label:
+                    text: 'USUARIO:'
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                TextInput:
+                    id: usuario
+                    font_size: 20
+                    size_hint: None,None 
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    size: [300,40]
+                Label:
+                    text: ' '
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: ' '
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                Label:
+                    text: 'SENHA:'
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                TextInput:
+                    id: senha
+                    font_size: 20
+                    size_hint_y: None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    size: [300,40]
+                Label:
+                    text: ' '
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+            Button:
+                size_hint: None,None
+                width: 300
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_normal: 'imagens/butEntrarNorm.png'
+                background_down: 'imagens/butEntrarDown.png'
+                on_press: app.Verifica(senha, usuario, ScMan, login)
+            Button:
+                size_hint: None,None
+                width: 300
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_normal: 'imagens/butVoltarNorm.png'
+                background_down: 'imagens/butVoltarDown.png'
+                on_press: ScMan.current = 'telaPrincipal'
+            Label:
+                id: login
+                text: ''
+                font_size: 30
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                
+
+    Screen:
+        name: 'telaCadastro'
+        BoxLayout:
+            spacing: 10
+            orientation: 'vertical'
+            canvas.before:
+                Color: 
+                    rgba: 0.8,0.5,0,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: ' '
+                    font_size: 30 
+                Label:
+                    text: 'USUARIO:'
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                TextInput:
+                    id: usuario2
+                    font_size: 20
+                    size_hint: None,None 
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    size: [300,40]
+                Label:
+                    text: ' '
+                    font_size: 30 
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: ' '
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                Label:
+                    text: 'SENHA:'
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                TextInput:
+                    id: senha2
+                    font_size: 20
+                    size_hint_y: None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    size: [300,40]
+                Label:
+                    text: ' '
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+            Button:
+                size_hint: None,None
+                width: 300
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_normal: 'imagens/butCadNorm.png'
+                background_down: 'imagens/butCadDown.png'
+                on_press: app.inserir(senha2, usuario2, retorno)
+            Button:
+                size_hint: None,None
+                width: 300
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_normal: 'imagens/butVoltarNorm.png'
+                background_down: 'imagens/butVoltarDown.png'
+                on_press: ScMan.current = 'telaPrincipal'
+            Label:
+                id: retorno
+                text: ''
+                font_size: 30
+                pos_hint: {'center_x': .5, 'center_y': .5}
+
+    Screen:
+        name: 'telaPesquisa'
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 10
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: ''
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                Slider:
+                    id: sld1
+                    min: 1970
+                    max: 2022
+                    step: 1
+                    orientation: 'horizontal'
+                    size_hint: None,None
+                    width: 300
+                    height: 60
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                Slider:
+                    id: sld2
+                    min: 1970
+                    max: 2022
+                    step: 1
+                    orientation: 'horizontal'
+                    size_hint: None,None
+                    width: 300
+                    height: 60
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                Label:
+                    text: ''
+                    font_size: 30
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    font_size: 20
+                    text: str(sld1.value)
+                Label:
+                    font_size: 20
+                    text: str(sld2.value)
+            Button:
+                size_hint: None,None
+                width: 300
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                background_normal: 'imagens/butPesquisarNormal.png'
+                background_down: 'imagens/butPesquisarDown.png'
+                on_press: app.pesquisa(sld1,sld2,plabel)
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+
+                Label:
+                    id: plabel 
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    font_size: 20
+                    text:
+                        ''

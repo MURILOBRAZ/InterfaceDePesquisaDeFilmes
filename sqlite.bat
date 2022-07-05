@@ -1,0 +1,2 @@
+cd Sqliteman
+sqliteman.exe
